@@ -62,7 +62,7 @@ public class CompetitionTest {
         competition.addCompetitior(athlete3);
         competition.addCompetitior(athlete2);
         competition.awardMedals();
-        assertEquals(athlete.getAccolades(), MedalType.GOLD);
+        assertEquals(athlete.getAccolades().get(0), MedalType.GOLD);
     }
 
 }

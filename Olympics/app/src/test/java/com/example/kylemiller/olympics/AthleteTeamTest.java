@@ -10,11 +10,13 @@ import static junit.framework.Assert.assertEquals;
  */
 public class AthleteTeamTest {
     Athlete athlete;
+    Athlete athlete2;
     AthleteTeam athleteTeam;
 
     @Before
     public void setUp(){
         athlete = new Athlete("Kyle", "Scottish", 5);
+        athlete2 = new Athlete("Kyle", "Scottish", 5);
         athleteTeam = new AthleteTeam("Scottish");
     }
 
@@ -38,6 +40,15 @@ public class AthleteTeamTest {
     public void sumsTeamSkill(){
         athleteTeam.teamJoin(athlete);
         assertEquals(athleteTeam.getSkillLevel(), 5);
+    }
+
+    @Test
+    public void medalTest(){
+        athleteTeam.teamJoin(athlete2);
+        athleteTeam.teamJoin(athlete);
+        athleteTeam.addMedal(MedalType.GOLD);
+        assertEquals(athlete.getAccolades().size(), 1);
+        assertEquals(athlete2.getAccolades().size(), 1);
     }
 
 

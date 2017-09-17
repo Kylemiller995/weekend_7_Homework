@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class AthleteTeam implements Competeable {
     private String nationality;
-    private ArrayList<Athlete> teamlist;
+    private ArrayList<Competeable> teamlist;
     private int teamSkillLevel;
     private ArrayList<MedalType> accolades;
 
@@ -23,12 +23,12 @@ public class AthleteTeam implements Competeable {
         return nationality;
     }
 
-    public ArrayList<Athlete> getTeamlist() {
+    public ArrayList<Competeable> getTeamlist() {
         return teamlist;
     }
 
     public int getSkillLevel() {
-        for(Athlete athlete: teamlist) {
+        for(Competeable athlete: teamlist) {
             teamSkillLevel += athlete.getSkillLevel();
         }
         return teamSkillLevel;
@@ -39,7 +39,8 @@ public class AthleteTeam implements Competeable {
     }
 
     public void addMedal(MedalType medalType){
-        accolades.add(medalType);
+        for(Competeable athelete: teamlist)
+            athelete.addMedal(medalType);
     }
 
 }
